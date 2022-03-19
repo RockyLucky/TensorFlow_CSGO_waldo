@@ -7,12 +7,31 @@ eddited by RockyLucky
 if you get TypeError: int() argument must be a string, a bytes-like object or a real number, not 'NoneType'
 its because it didn't find a object for detection
 '''
+
+import os
+import sys
+
+#print(os.environ["PATH"])
+
+os.environ["PATH"] = "C:\\tools\\cuda\\bin" + os.pathsep + os.environ["PATH"]
+os.environ["PATH"] = "C:\\Program Files\\NVIDIA\CUDNN\\v8.3\\include" + os.pathsep + os.environ["PATH"]
+os.environ["PATH"] = "C:\\Program Files\\NVIDIA\CUDNN\\v8.3\\extras\\CUPTI\\lib64" + os.pathsep + os.environ["PATH"]
+os.environ["PATH"] = "C:\\Program Files\\NVIDIA\CUDNN\\v8.3\\bin" + os.pathsep + os.environ["PATH"]
+
+# print(os.environ["PATH"])
+
+# need to install Zlib per: https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html#install-zlib-windows
+# installed in C:\\tools\\cuda\\bin
+# see also: https://stackoverflow.com/questions/69879188/could-not-load-library-cudnn-cnn-infer64-8-dll-error-code-126 
+
+# sys.exit()
+
 import pathlib
 import cv2
 import cv2 as cv
 import mss
 import time
-import sys
+
 
 import matplotlib
 import matplotlib.pyplot as plt
@@ -24,7 +43,6 @@ from six import BytesIO
 from PIL import Image, ImageDraw, ImageFont
 
 import tensorflow as tf
-import os
 import tensorflow_hub as hub
 
 if tf.__version__ < '1.4.0':
